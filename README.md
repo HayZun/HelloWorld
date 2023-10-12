@@ -31,7 +31,7 @@ model Message {
 npx prisma migrate dev --name init
 ```
 
-#installer https://sqlitebrowser.org/dl/ pour visualiser la db et insérer des données de test 
+Installer https://sqlitebrowser.org/dl/ pour visualiser la db et insérer des données de test 
 
 ## deploy backend node app 
 *code de backend.js à ajouter à votre projet*
