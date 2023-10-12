@@ -97,7 +97,7 @@ function Message() {
 export default Message;
 ```
 
-*code de App.js à ajouter à votre projet dans le src/*
+*code de App.js à modifier situé dans le src/*
 ```javascript
 import logo from './logo.svg';
 import './App.css';
