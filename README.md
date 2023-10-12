@@ -9,6 +9,7 @@ npx prisma init
 npm install --save express
 npm install cors
 ```
+*remplacer le fichier schema.prisma dans le dossier prisma-react-app/prisma*
 *code de schema.prisma*
 ```
 generator client {
@@ -25,7 +26,7 @@ model Message {
   text  String
 }
 ```
-*remplacer le fichier schema.prisma dans le dossier prisma-react-app/prisma*
+
 ```shell
 npx prisma migrate dev --name init
 ```
