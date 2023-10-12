@@ -1,12 +1,14 @@
 # Deploy front react app + backend node app + prisma db
 
 ## deploy front react app
-`npx create-react-app prisma-react-app`
-`cd .\prisma-react-app\`
-`npm install prisma`
-`npx prisma init`
-`npm install --save express`
-`npm install cors`
+```shell
+npx create-react-app prisma-react-app
+cd .\prisma-react-app\
+npm install prisma
+npx prisma init
+npm install --save express
+npm install cors
+```
 
 *remplacer le fichier schema.prisma dans le dossier prisma-react-app/prisma*
 `npx prisma migrate dev --name init`
