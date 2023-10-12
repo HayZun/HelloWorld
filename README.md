@@ -2,7 +2,7 @@
 
 ## deploy front react app
 ```shell
-- npx create-react-app prisma-react-app
+$ npx create-react-app prisma-react-app
 - cd .\prisma-react-app\
 - npm install prisma
 - npx prisma init
