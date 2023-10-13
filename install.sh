@@ -117,4 +117,7 @@ EOL
 # Appliquer les migrations
 npx prisma migrate dev --name init
 
+# Ajouter la commande "dev" dans les scripts de package.json du backend
+jq '.scripts.dev = "npx nodemon backend.js"' backend/package.json > backend/package_tmp.json && mv backend/package_tmp.json backend/package.json
+
 echo "Installation terminée !"
