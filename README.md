@@ -1,116 +1,73 @@
-# Deploy front react app + backend node app + prisma db
+# Installation de l'application
 
-## deploy front react app
-```shell
-npx create-react-app prisma-react-app
-cd .\prisma-react-app\
-npm install prisma
-npx prisma init
-npm install --save express
-npm install cors
-```
-*remplacer le fichier schema.prisma (situé dans le dossier /prisma)*
-*code de schema.prisma*
-```
-generator client {
-   provider = "prisma-client-js"
-}
+Ce script d'installation automatisé vous permet de mettre en place un environnement de développement pour une application web utilisant React et Express. Il installe et configure les dépendances nécessaires, crée la structure de fichiers de base, et effectue les migrations de base de données avec Prisma. Suivez ces étapes pour installer l'application sur votre système.
 
-datasource db {
-   provider = "sqlite"
-   url      = "file:./dev.db"
-}
+## Prérequis
 
-model Message {
-  id    Int    @id @default(autoincrement())
-  text  String
-}
-```
+Avant d'exécuter ce script, assurez-vous que vous avez Node.js et NPM (Node Package Manager) installés sur votre système. Vous pouvez les installer en suivant les instructions sur le site officiel de Node.js : [https://nodejs.org/](https://nodejs.org/).
 
-```shell
-npx prisma migrate dev --name init
-```
+## Installation
 
-Installer https://sqlitebrowser.org/dl/ pour visualiser la db et insérer des données de test 
+1. Clonez ce dépôt (si ce n'est pas déjà fait) :
 
-## deploy backend node app 
-*code de backend.js à ajouter à votre projet*
-```javascript
-import { PrismaClient } from '@prisma/client';
-import express from 'express';
-import cors from 'cors';
+   ```bash
+   git clone https://github.com/votre-utilisateur/votre-projet.git
+   ```
 
-const app = express();
-const port = 5000;
+2. Naviguez dans le répertoire de votre projet :
 
-app.use(cors()); // Utilisez cors
+   ```bash
+   cd votre-projet
+   ```
 
+3. Exécutez le script d'installation `install.sh` :
 
-const prisma = new PrismaClient()
+   ```bash
+   chmod +x install.sh
+   ./install.sh
+   ```
 
-app.get('/', (req, res) => {
-   res.send('Hello World, from express');
-});
+   Le script effectuera les étapes suivantes :
 
-app.get('/message', (req, res) => {
-   //retrive all data from message table
-   prisma.message.findMany().then((result) => {
-      //send only the "text" field
-      res.send(result.map((message) => message.text));
-   });
-});
+   - Frontend : Création d'une application React avec Vite, installation de Tailwind CSS, configuration de Tailwind, et remplacement de fichiers de configuration et de code source.
+   - Backend : Initialisation d'un projet Express avec Prisma, modification du fichier `package.json` pour spécifier `"type": "module"`, remplacement du fichier `schema.prisma`, et application des migrations de base de données.
 
-app.listen(port, function () {
-   console.log("Server listening on port 5000")
- })
-```
-Pour lancer le back-end :
-```shell
-node back-end.js
+4. Une fois le script terminé, votre environnement de développement est prêt.
+
+## Démarrage de l'application
+
+Après avoir exécuté le script d'installation, vous pouvez démarrer l'application en exécutant les commandes suivantes :
+
+### Démarrage du frontend
+
+Pour démarrer le frontend, utilisez la commande suivante dans le répertoire racine de votre projet :
+
+```bash
+cd frontend
+npm run dev
 ```
 
-## Front-end
-*code de Message.js à ajouter à votre projet dans le src/*
-```javascript
-import React, { useEffect, useState } from 'react';
+Votre application frontend sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
 
-const API_URL = 'http://localhost:5000';
+### Démarrage du backend
 
-function Message() {
-    const [message, setMessage] = useState('');
-    useEffect(() => {
-        fetch(`${API_URL}/message`)
-            .then((res) => res.json())
-            .then((data) => {
-                setMessage(data[0] + ' ' + data[1] + ' ' + data[2]);
-            });
-    }, []);
+Pour démarrer le backend, utilisez la commande suivante dans le répertoire racine de votre projet :
 
-
-  return (
-    <div>
-      <h1>Hello World Message</h1>
-      <p>{message}</p>
-    </div>
-  );
-}
-
-export default Message;
+```bash
+cd backend
+npm run dev
 ```
 
-*code de App.js à modifier situé dans le src/*
-```javascript
-import logo from './logo.svg';
-import './App.css';
-import Message from './Message';
+Votre serveur Express sera accessible à l'adresse [http://localhost:3001](http://localhost:3001).
 
-function App() {
-  return (
-    <div className="App">
-      <Message />
-    </div>
-  );
-}
+## Personnalisation
 
-export default App;
-```
+Vous pouvez personnaliser davantage votre application en modifiant les fichiers source et les dépendances. Assurez-vous de consulter la documentation de chaque dépendance pour en savoir plus sur leurs fonctionnalités et options de configuration.
+
+## Conclusion
+
+Félicitations ! Vous avez installé avec succès l'application de base avec React, Express et Prisma. Vous pouvez maintenant commencer à développer votre application web.
+
+Pour toute question ou problème, n'hésitez pas à consulter la documentation des outils utilisés ou à demander de l'aide sur les forums de développement.
+
+Bonne programmation !
