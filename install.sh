@@ -119,12 +119,11 @@ EOL
 cd ..
 mkdir backend
 cd backend
-npm init -y
+npm init es6 -y
 npm install express
 npm install prisma
 npx prisma init
 npm install nodemon --save-dev
-npm init es6 -y
 
 #install jq
 sudo apt-get install jq
