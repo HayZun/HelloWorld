@@ -29,8 +29,8 @@ cat > src/index.css <<EOL
 EOL
 
 #Ajouter le fichier Message.js
-cat > src/Message.js <<EOL
- import React, { useEffect, useState } from 'react';
+cat > src/Message.jsx <<EOL
+import React, { useEffect, useState } from 'react';
 
 function Message() {
     const [message, setMessage] = useState('');
@@ -53,6 +53,7 @@ function Message() {
 
 export default Message;
 EOL
+
 # Remplacer le contenu de App.jsx
 cat > src/App.jsx <<EOL
 import React, { useState } from 'react'
