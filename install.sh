@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Frontend
-npx create-vite frontend --template react -y
+echo -e "\n" | npx create-vite frontend --template react
 cd frontend
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
