@@ -28,9 +28,35 @@ cat > src/index.css <<EOL
 @tailwind utilities
 EOL
 
+#Ajouter le fichier Message.js
+ <<EOL
+ import React, { useEffect, useState } from 'react';
+
+function Message() {
+    const [message, setMessage] = useState('');
+    useEffect(() => {
+        fetch('/api')
+            .then((res) => res.json())
+            .then((data) => {
+                setMessage(data[0] + ' ' + data[1] + ' ' + data[2]);
+            });
+    }, []);
+
+
+  return (
+    <div>
+      <h1>Hello World Message</h1>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+export default Message;
+EOL
 # Remplacer le contenu de App.jsx
 cat > src/App.jsx <<EOL
 import React, { useState } from 'react'
+import Message from './Message'
 
 function Counter() {
    const [count, setCount] = useState(0)
@@ -44,25 +70,29 @@ function Counter() {
    }
 
    return (
-      <div class="m-2">
-         <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <img class="w-full" src="https://placekitten.com/200/100" />
-            <div class="px-6 py-4">
-               <div class="font-bold text-xl mb-2">Compteur</div>
-               <p class="text-gray-700 text-5xl">
+      <div className="m-2">
+         <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <img className="w-full" src="https://placekitten.com/200/100" />
+            <div className="px-6 py-4">
+               <div className="font-bold text-xl mb-2">Compteur</div>
+               <p className="text-gray-700 text-5xl">
                   {count}
                </p>
             </div>
-            <div class="px-6 pt-4 pb-2">
-               <button type="button" onClick={increment} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <div className="px-6 pt-4 pb-2">
+               <button type="button" onClick={increment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                   Incrémenter
                </button>
-               <button type="button" onClick={decrement} class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+               <button type="button" onClick={decrement} className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                   Décrémenter
                </button>
             </div>
          </div>
+         <div className="m-2">
+          <Message />
       </div>
+      </div>
+
    )
 }
 
@@ -151,5 +181,27 @@ npx prisma migrate dev --name init
 
 # Ajouter la commande "dev" dans les scripts de package.json du backend
 jq '.scripts.dev = "npx nodemon backend.js"' backend/package.json > backend/package_tmp.json && mv backend/package_tmp.json backend/package.json
+
+# Indiquer au client comment démarrer l'application
+echo ""
+echo "🚀 Installation terminée ! 🚀"
+echo ""
+echo "Pour lancer l'application, suivez ces étapes :"
+echo ""
+echo "Frontend :"
+echo "1. Ouvrez un terminal et naviguez dans le répertoire du frontend :"
+echo "   cd frontend"
+echo "2. Exécutez la commande suivante pour démarrer le frontend :"
+echo "   npm run dev"
+echo "3. Votre application frontend sera accessible à l'adresse http://localhost:5173"
+echo ""
+echo "Backend :"
+echo "1. Ouvrez un autre terminal et naviguez dans le répertoire du backend :"
+echo "   cd backend"
+echo "2. Exécutez la commande suivante pour démarrer le backend :"
+echo "   npm run dev"
+echo "3. Votre backend sera accessible à l'adresse http://localhost:3000"
+echo ""
+echo "Profitez de votre développement ! 🖥️"
 
 echo "Installation terminée !"
