@@ -94,6 +94,9 @@ npm install prisma
 npx prisma init
 npm install nodemon --save-dev
 
+#install jq
+apt-get install jq
+
 # Ajouter "type": "module" dans le fichier package.json
 jq '.type = "module"' package.json > tmp.json && mv tmp.json package.json
 
@@ -115,6 +118,32 @@ model Message {
   id    Int    @id @default(autoincrement())
   text  String
 }
+EOL
+
+cat > backend.js <<EOL
+import { PrismaClient } from '@prisma/client';
+import express from 'express';
+
+const app = express();
+const port = 3000;
+
+const prisma = new PrismaClient()
+
+app.get('/', (req, res) => {
+   res.send('Hello World, from express');
+});
+
+app.get('/api', (req, res) => {
+   //retrive all data from message table
+   prisma.message.findMany().then((result) => {
+      //send only the "text" field
+      res.send(result.map((message) => message.text));
+   });
+});
+
+app.listen(port, function () {
+   console.log("Server listening on port " + port)
+ })
 EOL
 
 # Appliquer les migrations
