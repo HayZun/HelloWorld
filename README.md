@@ -11,13 +11,13 @@ Avant d'exécuter ce script, assurez-vous que vous avez Node.js et NPM (Node Pac
 1. Clonez ce dépôt (si ce n'est pas déjà fait) :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-projet.git
+   git clone https://github.com/HayZun/HelloWorld.git
    ```
 
 2. Naviguez dans le répertoire de votre projet :
 
    ```bash
-   cd votre-projet
+   cd HelloWorld
    ```
 
 3. Exécutez le script d'installation `install.sh` :
@@ -47,7 +47,7 @@ cd frontend
 npm run dev
 ```
 
-Votre application frontend sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
+Votre application frontend sera accessible à l'adresse [http://localhost:3000](http://localhost:5172).
 
 ### Démarrage du backend
 
@@ -58,16 +58,4 @@ cd backend
 npm run dev
 ```
 
-Votre serveur Express sera accessible à l'adresse [http://localhost:3001](http://localhost:3001).
-
-## Personnalisation
-
-Vous pouvez personnaliser davantage votre application en modifiant les fichiers source et les dépendances. Assurez-vous de consulter la documentation de chaque dépendance pour en savoir plus sur leurs fonctionnalités et options de configuration.
-
-## Conclusion
-
-Félicitations ! Vous avez installé avec succès l'application de base avec React, Express et Prisma. Vous pouvez maintenant commencer à développer votre application web.
-
-Pour toute question ou problème, n'hésitez pas à consulter la documentation des outils utilisés ou à demander de l'aide sur les forums de développement.
-
-Bonne programmation !
+Votre serveur Express sera accessible à l'adresse [http://localhost:3001](http://localhost:3000).
