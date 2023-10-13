@@ -98,7 +98,7 @@ npm install nodemon --save-dev
 jq '.type = "module"' package.json > tmp.json && mv tmp.json package.json
 
 # Ajouter la commande "dev" dans les scripts de package.json du backend
-jq '.scripts.dev = "npx nodemon backend.js"' backend/package.json > backend/package_tmp.json && mv backend/package_tmp.json backend/package.json
+jq '.scripts.dev = "npx nodemon backend.js"' package.json > tmp.json && mv tmp.json package.json
 
 # Remplacer le contenu du fichier schema.prisma
 cat > prisma/schema.prisma <<EOL
