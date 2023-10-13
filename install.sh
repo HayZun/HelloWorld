@@ -125,8 +125,14 @@ npm install prisma
 npx prisma init
 npm install nodemon --save-dev
 
-#install jq
-sudo apt-get install jq
+# Vérifier si jq est déjà installé
+if ! command -v jq &> /dev/null; then
+    echo "jq n'est pas installé. Installation en cours..."
+    sudo apt-get install jq
+else
+    echo "jq est déjà installé."
+fi
+
 
 # Ajouter la commande "dev" dans les scripts de package.json du backend
 jq '.scripts.dev = "npx nodemon backend.js"' package.json > tmp.json && mv tmp.json package.json
