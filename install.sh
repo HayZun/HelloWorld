@@ -29,7 +29,7 @@ cat > src/index.css <<EOL
 EOL
 
 #Ajouter le fichier Message.js
- <<EOL
+cat > src/Message.js <<EOL
  import React, { useEffect, useState } from 'react';
 
 function Message() {
