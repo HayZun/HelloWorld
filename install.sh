@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Frontend
-npx create-vite@latest frontend --template react
+npx create-vite frontend --template react -y
 cd frontend
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
@@ -124,12 +124,10 @@ npm install express
 npm install prisma
 npx prisma init
 npm install nodemon --save-dev
+npm init es6 -y
 
 #install jq
-apt-get install jq
-
-# Ajouter "type": "module" dans le fichier package.json
-jq '.type = "module"' package.json > tmp.json && mv tmp.json package.json
+sudo apt-get install jq
 
 # Ajouter la commande "dev" dans les scripts de package.json du backend
 jq '.scripts.dev = "npx nodemon backend.js"' package.json > tmp.json && mv tmp.json package.json
