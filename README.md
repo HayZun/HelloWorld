@@ -36,11 +36,12 @@ Installer https://sqlitebrowser.org/dl/ pour visualiser la db et insérer des do
 ## deploy backend node app 
 *code de backend.js à ajouter à votre projet*
 ```javascript
-const express = require('express');
+import { PrismaClient } from '@prisma/client';
+import express from 'express';
+import cors from 'cors';
+
 const app = express();
 const port = 5000;
-const { PrismaClient } = require('@prisma/client');
-const cors = require('cors'); // Importez le module cors
 
 app.use(cors()); // Utilisez cors
 
